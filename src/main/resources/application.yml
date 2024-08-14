@@ -1,0 +1,24 @@
+runtime: java11
+instance_class: F1
+entrypoint: java -jar target/your-app.jar
+
+handlers:
+  - url: /.*
+    script: this field is required, but ignored
+
+application:
+  bucket:
+    name: marketplace-api-storage
+
+spring:
+  aws:
+    accessKey: ${AWS_ACCESS_KEY}
+    secretKey: ${AWS_SECRET_KEY}
+    region: us-east-2
+
+  servlet:
+    multipart:
+      enabled: true
+      file-size-threshold: 2MB
+      max-file-size: 5MB
+      max-request-size: 10MB
